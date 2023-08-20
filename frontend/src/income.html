@@ -1,0 +1,130 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTra</title>
+    <link rel="stylesheet" href="css/pico.css">
+    <link rel="stylesheet" href="css/pico.docs.css">
+    <link rel="stylesheet" herf="css/switcher.css">
+    <script src="js/themeswitcher.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+        <!-- Navigation Begin -->
+        <aside>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/frontend/src/index.html" class="secondary">Home</a>
+                    </li>
+                    <li>
+                        <a href="/frontend/src/income.html">Income Analysis</a>
+                    </li>
+                    <li>
+                        <a href="/frontend/src/expense.html" class="secondary">Expense Tracker</a>
+                    </li>
+                    <li>
+                        <a class="secondary">Budget Manage</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Navigation End -->
+        <!-- Main Begin -->
+        <div>
+            <section>
+                <hgroup>
+                    <h1>Income</h1>
+                    <h2></h2>
+                </hgroup>
+                <nav>
+                    <ul>
+                        <li>
+                            <a>Add income</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a class="secondary">Transactions</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a class="secondary">What If...?</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Add income part Begin -->
+                <section id="addincome">
+                    <form>
+                        <label for="date">Date
+                            <input type="date" id="date" name="date" required>
+                        </label>
+
+                        <label for="source">Source</label>
+                        <select id="source" required>
+                            <option value="" selected>Select a source category</option>
+                            <option value="">Income</option>
+                            <option value="">Earnings</option>
+                            <option value="">Revenue</option>
+                        </select>
+
+                        <label for="amount">Amount
+                            <input type="number" id="amount" name="amount" placeholder="Amount" required>
+                        </label>
+
+                        <label for="note">Note
+                            <input type="text" id="note" name="note" placeholder="Note">
+                            <small></small>
+                        </label>
+                        <br>
+
+                        <button type="submit">add new income</button>
+                    </form>
+                </section>
+                <!-- Add income part End -->
+                <!-- Transactions part Begin -->
+                <section id="transactions" hidden>
+                    <div class="taction">
+                        <img class="taction_category" />
+                        <div>
+                            <span class="taction_name">Transaction Name</span>
+                            <br>
+                            <small>Yesterday, 12:49 PM</small>
+                        </div>
+                        <span class="taction_amount">-$4,30</span>
+                    </div>
+                    <div class="taction">
+                        <img class="taction_category" />
+                        <div>
+                            <span class="taction_name">Transaction Name</span>
+                            <br>
+                            <small>Yesterday, 12:49 PM</small>
+                        </div>
+                        <span class="taction_amount">-$4,30</span>
+                    </div>
+                    <div class="taction">
+                        <img class="taction_category" />
+                        <div>
+                            <span class="taction_name">Transaction Name</span>
+                            <br>
+                            <small>Yesterday, 12:49 PM</small>
+                        </div>
+                        <span class="taction_amount">-$4,30</span>
+                    </div>
+                </section>
+                <!-- Transactions part End -->
+                <!-- What If...? part Begin -->
+                <section id="whatif">
+
+                </section>
+                <!-- What If...? part End -->
+            </section>
+        </div>
+        <!-- Main End -->
+    </main>
+</body>
+
+</html>

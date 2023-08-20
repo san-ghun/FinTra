@@ -1,0 +1,183 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTra</title>
+    <link rel="stylesheet" href="css/pico.css">
+    <link rel="stylesheet" href="css/pico.docs.css">
+    <link rel="stylesheet" herf="css/switcher.css">
+    <script src="js/themeswitcher.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+        <!-- Navigation Begin -->
+        <aside>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/frontend/src/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="/frontend/src/income.html" class="secondary">Income Analysis</a>
+                    </li>
+                    <li>
+                        <a href="/frontend/src/expense.html" class="secondary">Expense Tracker</a>
+                    </li>
+                    <li>
+                        <a class="secondary">Budget Manage</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Navigation End -->
+        <!-- Main Begin -->
+        <div>
+            <section>
+                <hgroup>
+                    <h1>Home</h1>
+                    <h2></h2>
+                </hgroup>
+                <nav>
+                    <ul>
+                        <li>
+                            <a id="taboverview">Overview</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a id="tabtransactions" class="secondary">Transactions</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a id="tabbudget" class="secondary">Budget</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Overview part Begin -->
+                <section id="overview">
+                    <div>
+                        Figure or Graph
+                    </div>
+                    <!-- example 01 -->
+                    <div class="grid">
+                        <article>
+                            <header>
+                                <nav>
+                                    <ul>
+                                        <li>Total Income</li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <a>see all</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </header>
+                            <h4>1.000,00</h4>
+                            <small>Dollar</small>
+                            <footer>
+                                <!-- <a href="/frontend/src/income.html" role="button">Add Income</a> -->
+                                <button>Add Income</button>
+                            </footer>
+                        </article>
+                        <article>
+                            <header>
+                                <nav>
+                                    <ul>
+                                        <li>Total Expense</li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <a>see all</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </header>
+                            <h4>1.000,00</h4>
+                            <small>Dollar</small>
+                            <footer>
+                                <!-- <a href="/frontend/src/expense.html" role="button" class="contrast">Add Expense</a> -->
+                                <button class="contrast">Add Expense</button>
+                            </footer>
+                        </article>
+                    </div>
+                    <!-- example 02 -->
+                    <div class="grid">
+                        <a href="#" role="button">Add Income</a>
+                        <a href="#" role="button" class="contrast">Add Expense</a>
+                    </div>
+                </section>
+                <!-- Overview part End -->
+                <!-- Transactions part Begin -->
+                <section id="transactions" hidden>
+                    <div class="taction">
+                        <img class="taction_category" />
+                        <div>
+                            <span class="taction_name">Transaction Name</span>
+                            <br>
+                            <small>Yesterday, 12:49 PM</small>
+                        </div>
+                        <span class="taction_amount">-$4,30</span>
+                    </div>
+                    <div class="taction">
+                        <img class="taction_category" />
+                        <div>
+                            <span class="taction_name">Transaction Name</span>
+                            <br>
+                            <small>Yesterday, 12:49 PM</small>
+                        </div>
+                        <span class="taction_amount">-$4,30</span>
+                    </div>
+                    <div class="taction">
+                        <img class="taction_category" />
+                        <div>
+                            <span class="taction_name">Transaction Name</span>
+                            <br>
+                            <small>Yesterday, 12:49 PM</small>
+                        </div>
+                        <span class="taction_amount">-$4,30</span>
+                    </div>
+                </section>
+                <!-- Transactions part End -->
+                <!-- Budget part Begin -->
+                <section id="budget" hidden>
+                    <div>
+                        <article>
+                            <header>
+                                Budget 1
+                            </header>
+                            <span class="budget_amout">1.000,00</span>
+                            <small>Dollar</small>
+                            <footer>
+                                <div class="grid">
+                                    <button>Increase +</button>
+                                    <button class="secondary">Decrease -</button>
+                                </div>
+                            </footer>
+                        </article>
+                        <article>
+                            <header>
+                                Budget 2
+                            </header>
+                            <span class="budget_amout">1.000,00</span>
+                            <small>Dollar</small>
+                            <footer>
+                                <div class="grid">
+                                    <button>Increase +</button>
+                                    <button class="secondary">Decrease -</button>
+                                </div>
+                            </footer>
+                        </article>
+                    </div>
+                </section>
+                <!-- Budget part End -->
+            </section>
+        </div>
+        <!-- Main End -->
+    </main>
+</body>
+
+</html>
