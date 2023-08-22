@@ -60,7 +60,8 @@
                 <!-- Overview part Begin -->
                 <section id="overview">
                     <div>
-                        Figure or Graph
+                        Figure or Graph (demo)
+                        <canvas id="myChart"></canvas>
                     </div>
                     <!-- example 01 -->
                     <div class="grid">
@@ -175,6 +176,7 @@
         <!-- Main End -->
     </main>
     <script src="js/pocketbase.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript">
         const pb = new PocketBase("https://pb-fintra.fly.dev/");
 
@@ -198,13 +200,54 @@
             tot_income.innerText = total_income;
             tot_expense.innerText = total_expense;
 
+            const records_exp_expense = records_expense.filter((record) => record.category === "expense");
+            const records_exp_spending = records_expense.filter((record) => record.category === "spending");
+            const records_exp_transaction = records_expense.filter((record) => record.category === "transaction");
+
+            const tot_exp_expense = records_exp_expense.reduce(
+                (acc, cur) => acc + cur.amount, 0,
+            );
+            const tot_exp_spending = records_exp_spending.reduce(
+                (acc, cur) => acc + cur.amount, 0,
+            );
+            const tot_exp_transaction = records_exp_transaction.reduce(
+                (acc, cur) => acc + cur.amount, 0,
+            );
+
             console.log(records);
 
             records.forEach((record) => {
                 let section = document.createElement("section");
                 section.innerHTML = `<span><strong>${record.inout.toUpperCase()}\)</strong></span><br><span>\> ${record.category}${record.source}</span> | <span>$ ${record.amount}</span> | <small>${record.date.substring(0, 10)}</small> : ${record.note}`;
                 document.querySelector("section #transactions").appendChild(section);
-            })
+            });
+
+            const ctx = document.getElementById('myChart');
+
+            const data = {
+                labels: [
+                    'Expense',
+                    'Spending',
+                    'Transactions'
+                ],
+                datasets: [{
+                    label: 'Expense',
+                    data: [tot_exp_expense, tot_exp_spending, tot_exp_transaction],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+            }
+
+            new Chart(ctx, config);
         }
         show_home();
     </script>
