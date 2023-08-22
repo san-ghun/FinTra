@@ -88,33 +88,7 @@
                 <!-- Add income part End -->
                 <!-- Transactions part Begin -->
                 <section id="transactions" hidden>
-                    <div class="taction">
-                        <img class="taction_category" />
-                        <div>
-                            <span class="taction_name">Transaction Name</span>
-                            <br>
-                            <small>Yesterday, 12:49 PM</small>
-                        </div>
-                        <span class="taction_amount">-$4,30</span>
-                    </div>
-                    <div class="taction">
-                        <img class="taction_category" />
-                        <div>
-                            <span class="taction_name">Transaction Name</span>
-                            <br>
-                            <small>Yesterday, 12:49 PM</small>
-                        </div>
-                        <span class="taction_amount">-$4,30</span>
-                    </div>
-                    <div class="taction">
-                        <img class="taction_category" />
-                        <div>
-                            <span class="taction_name">Transaction Name</span>
-                            <br>
-                            <small>Yesterday, 12:49 PM</small>
-                        </div>
-                        <span class="taction_amount">-$4,30</span>
-                    </div>
+                    <!--  -->
                 </section>
                 <!-- Transactions part End -->
                 <!-- What If...? part Begin -->
@@ -126,6 +100,30 @@
         </div>
         <!-- Main End -->
     </main>
+    <script src="js/pocketbase.umd.js"></script>
+    <script type="text/javascript">
+        const pb = new PocketBase("https://pb-fintra.fly.dev/");
+
+        async function show_income() {
+            const records = await pb.collection('transactions').getFullList({
+                sort: '-date',
+            });
+            const records_income = records.filter((record) => record.inout === "income");
+
+            const total_income = records_income.reduce(
+                (accumulator, currentValue) => accumulator + currentValue.amount, 0,
+            );
+
+            console.log(records_income);
+
+            records_income.forEach((record) => {
+                let section = document.createElement("section");
+                section.innerHTML = `<span><strong>${record.inout.toUpperCase()}\)</strong></span><br><span>\> ${record.category}${record.source}</span> | <span>$ ${record.amount}</span> | <small>${record.date.substring(0, 10)}</small> : ${record.note}`;
+                document.querySelector("section #transactions").appendChild(section);
+            })
+        }
+        show_income();
+    </script>
 </body>
 
 </html>
