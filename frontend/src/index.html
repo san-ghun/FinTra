@@ -77,11 +77,11 @@
                                     </ul>
                                 </nav>
                             </header>
-                            <h4>1.000,00</h4>
+                            <h4 id="tot_income">1.000,00</h4>
                             <small>Dollar</small>
                             <footer>
                                 <!-- <a href="/frontend/src/income.html" role="button">Add Income</a> -->
-                                <button>Add Income</button>
+                                <button id="toaddincome">Add Income</button>
                             </footer>
                         </article>
                         <article>
@@ -97,24 +97,19 @@
                                     </ul>
                                 </nav>
                             </header>
-                            <h4>1.000,00</h4>
+                            <h4 id="tot_expense">1.000,00</h4>
                             <small>Dollar</small>
                             <footer>
                                 <!-- <a href="/frontend/src/expense.html" role="button" class="contrast">Add Expense</a> -->
-                                <button class="contrast">Add Expense</button>
+                                <button id="toaddexpense" class="contrast">Add Expense</button>
                             </footer>
                         </article>
-                    </div>
-                    <!-- example 02 -->
-                    <div class="grid">
-                        <a href="#" role="button">Add Income</a>
-                        <a href="#" role="button" class="contrast">Add Expense</a>
                     </div>
                 </section>
                 <!-- Overview part End -->
                 <!-- Transactions part Begin -->
                 <section id="transactions" hidden>
-                    <div class="taction">
+                    <!-- <div class="taction">
                         <img class="taction_category" />
                         <div>
                             <span class="taction_name">Transaction Name</span>
@@ -140,7 +135,7 @@
                             <small>Yesterday, 12:49 PM</small>
                         </div>
                         <span class="taction_amount">-$4,30</span>
-                    </div>
+                    </div> -->
                 </section>
                 <!-- Transactions part End -->
                 <!-- Budget part Begin -->
@@ -179,6 +174,40 @@
         </div>
         <!-- Main End -->
     </main>
+    <script src="js/pocketbase.umd.js"></script>
+    <script type="text/javascript">
+        const pb = new PocketBase("http://170.187.188.84:80");
+
+        async function show_home() {
+            const tot_income = document.getElementById("tot_income");
+            const tot_expense = document.getElementById("tot_expense");
+
+            const records = await pb.collection('transactions').getFullList({
+                sort: '-date',
+            });
+            const records_income = records.filter((record) => record.inout === "income");
+            const records_expense = records.filter((record) => record.inout === "expense");
+
+            const total_income = records_income.reduce(
+                (accumulator, currentValue) => accumulator + currentValue.amount, 0,
+            );
+            const total_expense = records_expense.reduce(
+                (accumulator, currentValue) => accumulator + currentValue.amount, 0,
+            );
+
+            tot_income.innerText = total_income;
+            tot_expense.innerText = total_expense;
+
+            console.log(records);
+
+            records.forEach((record) => {
+                let section = document.createElement("section");
+                section.innerHTML = `<span><strong>${record.inout.toUpperCase()}\)</strong></span><br><span>\> ${record.category}${record.source}</span> | <span>$ ${record.amount}</span> | <small>${record.date.substring(0, 10)}</small> : ${record.note}`;
+                document.querySelector("section #transactions").appendChild(section);
+            })
+        }
+        show_home();
+    </script>
 </body>
 
 </html>
