@@ -123,6 +123,29 @@
             })
         }
         show_income();
+
+        const incomeForm = document.getElementById("addincome").querySelector("form");
+
+        async function handleIncomeSubmit(event) {
+            event.preventDefault();
+            console.log(event);
+            t = event;
+
+            const data = {
+                "inout": "income",
+                "date": event.srcElement[0].value,
+                "source": event.srcElement[1].selectedOptions[0].label.toLowerCase(),
+                "amount": parseInt(event.srcElement[2].value, 10),
+                "note": event.srcElement[3].value,
+            };
+            console.log(data);
+
+            const record = await pb.collection('transactions').create(data);
+
+            location.assign("/FinTra/frontend/src/income.html");
+        }
+
+        incomeForm.addEventListener("submit", handleIncomeSubmit);
     </script>
 </body>
 

@@ -123,6 +123,29 @@
             })
         }
         show_expense();
+
+        const expenseForm = document.getElementById("addexpense").querySelector("form");
+
+        async function handleExpenseSubmit(event) {
+            event.preventDefault();
+            console.log(event);
+            t = event;
+
+            const data = {
+                "inout": "expense",
+                "date": event.srcElement[0].value,
+                "category": event.srcElement[1].selectedOptions[0].label.toLowerCase(),
+                "amount": parseInt(event.srcElement[2].value, 10),
+                "note": event.srcElement[3].value,
+            };
+            console.log(data);
+
+            const record = await pb.collection('transactions').create(data);
+
+            location.assign("/FinTra/frontend/src/expense.html");
+        }
+
+        expenseForm.addEventListener("submit", handleExpenseSubmit);
     </script>
 </body>
 
