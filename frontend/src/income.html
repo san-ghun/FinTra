@@ -93,13 +93,48 @@
                 <!-- Transactions part End -->
                 <!-- What If...? part Begin -->
                 <section id="whatif">
-
+                    <button class="contrast" data-target="modal-example" onClick="toggleModal(event)">
+                        Launch "What If...?"
+                    </button>
                 </section>
                 <!-- What If...? part End -->
             </section>
         </div>
         <!-- Main End -->
     </main>
+
+    <!-- Modal for the "What If...?" -->
+    <script src="js/modal.js"></script>
+    <dialog id="modal-example">
+        <article>
+            <a herf="#close" aria-label="Close" class="close" data-target="modal-example"
+                onclick="toggleModal(event)"></a>
+            <h3>What If...?</h3>
+            <p>ddd</p>
+            <footer>
+                <a href="#cancel" role="button" class="secondary" data-target="modal-example"
+                    onclick="toggleModal(event)">
+                    Cancel
+                </a>
+                <a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)">
+                    Confirm
+                </a>
+            </footer>
+        </article>
+    </dialog>
+    <script type="text/javascript">
+        const btn_whatif = document.getElementById("whatif").querySelector("button");
+        const p_whatif = document.getElementById("modal-example").querySelector("p");
+
+        function update_p() {
+            p_whatif.innerText = Math.floor(Math.random() * 10) % 2 != 1
+                ? `Congrats! You won a lottery worth 50.000,00. \nHow would you deal with it?`
+                : `Oh, you have to pay for unexpected tax of 10.000,00. \nHow would you deal with it?`;
+        }
+
+        btn_whatif.addEventListener("click", update_p);
+    </script>
+
     <script src="js/pocketbase.umd.js"></script>
     <script type="text/javascript">
         const pb = new PocketBase("https://pb-fintra.fly.dev/");
