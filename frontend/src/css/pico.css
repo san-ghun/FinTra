@@ -7,9 +7,9 @@
  * Theme: default
  */
 :root {
-  --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
-    "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family: "Hubballi", system-ui, -apple-system, "Segoe UI", "Roboto",
+    "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --line-height: 1.5;
   --font-weight: 400;
   --font-size: 16px;
@@ -205,7 +205,9 @@ kbd {
 
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --background-color: #fff;
+  /* --background-color: #fff; */
+  /* --background-color: #faf1e4; */
+  --background-color: #eadbc8;
   --color: hsl(205, 20%, 32%);
   --h1-color: hsl(205, 30%, 15%);
   --h2-color: #24333e;
